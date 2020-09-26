@@ -1,0 +1,18 @@
+html {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 100%;
+}
+
+body {
+  background: $bgColor;
+  margin: 0;
+}
+
+.content-container {
+  $containerGap: 38px;
+  margin-left: $containerGap;
+  margin-right: $containerGap;
+}
+
