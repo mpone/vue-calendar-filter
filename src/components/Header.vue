@@ -7,7 +7,6 @@
             height="20"
             viewBox="0 0 20 20"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
           >
             <path
               d="M1.01149 17.9235C0.845533 17.9235 0.762555 17.9234 0.596597 17.8405C0.181704
@@ -65,7 +64,6 @@
               height="6"
               viewBox="0 0 11 6"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M5.5 6C5.21552 6 5.02591 5.91178 4.83625 5.7353L0.284483 1.50002C-0.0948276
@@ -85,7 +83,6 @@
             height="19"
             viewBox="0 0 19 19"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
           >
             <path
               d="M8.26065 15.7205C3.93751 15.7205 0.400391 12.1834 0.400391
@@ -119,7 +116,6 @@
               height="5"
               viewBox="0 0 11 6"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M5.5 6C5.21552 6 5.02591 5.91178 4.83625 5.7353L0.284483 1.50002C-0.0948276

@@ -76,14 +76,16 @@ export default {
 
   .main {
     display: flex;
+    justify-content: start;
     margin-top: 48px;
   }
 
   .sidebar {
-    margin-right: 104px;
+    margin-right: $sidebarMrgnRight;
   }
 
   .content {
+    // width: 100%;
     width: 1269px;
   }
 

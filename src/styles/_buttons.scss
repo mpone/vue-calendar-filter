@@ -44,7 +44,7 @@ $measurements: 43px;
   }
 
   &--round {
-    border-radius: 100px;
+    border-radius: $biggestBrdrRadius;
   }
 
   &--light {
@@ -96,6 +96,26 @@ $measurements: 43px;
     
     &:hover {
       background: $activeOrangeColor;
+    }
+  }
+
+  &--change,
+  &--delete {
+    background: transparent;
+  }
+
+  &--date-close {
+    width: 27px;
+    height: 27px;
+    font-size: 12px;
+    font-weight: 700;
+    color: $choosenDateColor;
+    background: $closeDateColor;
+    border-radius: 50%;
+
+    &:hover {
+      color: $lightColor;
+      background: $choosenDateColor;
     }
   }
 }

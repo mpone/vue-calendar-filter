@@ -9,7 +9,6 @@
           height="6"
           viewBox="0 0 11 6"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d="M5.5 6C5.21552 6 5.02591 5.91178 4.83625 5.7353L0.284483 1.50002C-0.0948276
@@ -24,7 +23,11 @@
     </div>
 
     <div class="user-type__icon">
-      <svg class="user-type__icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        class="user-type__icon-svg"
+        width="24" height="24"
+        viewBox="0 0 24 24"
+      >
         <path d="M20.8 23.8C21.3 23.8 21.8 23.3 21.8 22.8V10H19.8V21.8H12V23.8H20.8Z"
         />
         <path
@@ -51,15 +54,21 @@
 <style lang="scss">
   @import "@/styles/main.scss";
 
-  $paddingX: 20px;
+  // $paddingX: 20px;
+  $sectionWidth: 240px;
+  $iconWidth: 124px;
 
   .user-type {
     $blockName: &;
 
     position: relative;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     height: 54px;
+    width: $sectionWidth;
+    background: $mainLightColor;
+    border-radius: $mainBorderRadius;
 
     &__select {
       z-index: 1;
@@ -67,8 +76,8 @@
       justify-content: space-between;
       align-items: center;
       width: $sidebarWidth;
-      padding-left: $paddingX;
-      padding-right: $paddingX;
+      padding-left: $mainGapX;
+      padding-right: $mainGapX;
       height: 100%;
 
       @extend %ptSansFontSidebar;
@@ -86,7 +95,7 @@
 
       &::before {
         content: "";
-        z-index: -1;
+        z-index: 1;
         top: 0;
         left: 0;
         position: absolute;
@@ -103,16 +112,8 @@
     }
 
     &__icon {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      width: 124px;
-      height: 100%;
-      padding-right: $paddingX;
-      background: $mainLightColor;
-      border-radius: $mainBorderRadius;
-      transform: translateX(-50%);
-      box-shadow: $componentsBoxShadow;
+      z-index: 0;
+      padding-right: $mainGapX;
     }
 
     &__icon-svg {
