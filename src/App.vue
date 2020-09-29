@@ -1,5 +1,8 @@
 <template>
-  <div id="app" class="app">
+  <div id="app" :class="{
+    'bg-hovered': isCalendarClicked,
+    'not-scrolled': isCalendarClicked,
+  }">
     <Header />
 
     <main class="main content-container">
@@ -9,7 +12,12 @@
       </section>
 
       <section class="content">
-        <FiltersBar />
+        <FiltersBar @handle-calendar-click="handleCalendarClick"/>
+
+        <article class="content__calendar-filter">
+          <CalendarFilter />
+        </article>
+
         <UsersTable :users="users" />
       </section>
     </main>
@@ -21,7 +29,11 @@ import Header from '@/components/Header.vue';
 import SelectAdminType from '@/components/SelectAdminType.vue';
 import Menu from '@/components/Menu.vue';
 import FiltersBar from '@/components/FiltersBar.vue';
+import CalendarFilter from '@/components/CalendarFilter.vue';
 import UsersTable from '@/components/UsersTable.vue';
+
+// @handle-calendar-click="handleCalendarClick"
+// v-show="isCalendarClicked"
 
 export default {
   name: 'App',
@@ -30,10 +42,12 @@ export default {
     SelectAdminType,
     Menu,
     FiltersBar,
+    CalendarFilter,
     UsersTable,
   },
   data() {
     return {
+      isCalendarClicked: false,
       users: [
         {
           id: 1, name: 'User1', email: 'test@gmail.com', registration: 'registration', activity: 'activity', action: 'action', product: 'product',
@@ -62,26 +76,36 @@ export default {
       ],
     };
   },
+  methods: {
+    handleCalendarClick() {
+      this.isCalendarClicked = !this.isCalendarClicked;
+    },
+  },
 };
 </script>
 
 <style lang="scss">
   @import "@/styles/main.scss";
 
-  // .app {
+  .not-scrolled {
+    overflow: hidden;
+  }
 
-    // &::before {
-    //   z-index: 3;
-    //   content: "";
-    //   display: block;
-    //   position: fixed;
-    //   top: 0;
-    //   left: 0;
-    //   width: 100vw;
-    //   height: 100vh;
-    //   background: rgba(240, 246, 252, 0.8);
-    // }
-  // }
+  .bg-hovered {
+
+    &::before {
+      z-index: 3;
+      content: "";
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(240, 246, 252, 0.8);
+      filter: blur(10px);
+    }
+  }
 
   .main {
     display: flex;

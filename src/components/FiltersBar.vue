@@ -2,7 +2,7 @@
   <section class="filters">
     <article class="filters__all">
       <div class="filters__main">
-        <button @click="isClicked = !isClicked" class="filters__main-btn filters__calendar">
+        <button @click="handleClick" class="filters__main-btn filters__calendar">
           <span class="filters__calendar-icon">
             <svg class="filters__calendar-svg" width="23" height="20" viewBox="0 0 23 20">
               <path d="M21.5001 20H1C0.4 20 0 19.6 0 19V2.70001C0 2.10001 0.4 1.70001
@@ -131,8 +131,6 @@
       </div>
     </article>
 
-    <CalendarFilter v-show="isClicked"/>
-
     <article v-show="isClicked" class="filters__choosen">
       <div class="filters__date">
         <span class="filters__date-text">
@@ -151,21 +149,16 @@
 </template>
 
 <script>
-import CalendarFilter from '@/components/CalendarFilter.vue';
-
 export default {
-  components: {
-    CalendarFilter,
-  },
   data() {
     return {
       isClicked: false,
-      'header-color': 'red',
     };
   },
   methods: {
-    testClick() {
-      this.isClicked = true;
+    handleClick() {
+      this.isClicked = !this.isClicked;
+      this.$emit('handle-calendar-click');
     },
   },
 };
