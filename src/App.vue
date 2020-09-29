@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
     <Header />
 
     <main class="main content-container">
@@ -13,12 +13,6 @@
         <UsersTable :users="users" />
       </section>
     </main>
-
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/> -->
   </div>
 </template>
 
@@ -74,6 +68,21 @@ export default {
 <style lang="scss">
   @import "@/styles/main.scss";
 
+  // .app {
+
+    // &::before {
+    //   z-index: 3;
+    //   content: "";
+    //   display: block;
+    //   position: fixed;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100vw;
+    //   height: 100vh;
+    //   background: rgba(240, 246, 252, 0.8);
+    // }
+  // }
+
   .main {
     display: flex;
     justify-content: start;
@@ -85,7 +94,6 @@ export default {
   }
 
   .content {
-    // width: 100%;
     width: 1269px;
   }
 

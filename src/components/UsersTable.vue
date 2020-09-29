@@ -293,6 +293,8 @@ export default {
       height: 100%;
       border: none;
 
+      border: 1px solid;
+
       &:focus {
         outline: none;
         height: auto;
