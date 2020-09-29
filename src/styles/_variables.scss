@@ -2,20 +2,26 @@
 $bgColor:  #f0f6fc;
 $mainLightColor: #fff;
 $mainDarkColor: #000;
+$shadowColor: rgba(213, 221, 230, 0.6);
+$usersTableCheckbox: rgba(131, 142, 157, 0.3);
+$secondaryBorderColor: #e7ecf1;
+$choosenDateColor: #586375;
 
 // Buttons colors
-$lightColor: #fff;
+$lightColor: $mainLightColor;
 $darkerColor: rgba(203, 215, 228, 0.4);
 $darkColor: #000;
 $simpleOrangeColor: #ff7439;
 $activeOrangeColor: #f16e36;
 $disabledOrangeColor: rgba(255, 116, 57, 0.5);
-$shadowColor: rgba(213, 221, 230, 0.6);
+$closeDateColor: #677489;
 
 // Global
 $smallElementsHeight: 85px;
 $mainBorderRadius: 10px;
 $componentsGapY: 10px;
+$biggestBrdrRadius: 100px;
+$smallGap: 7px;
 
 // Animation
 $animOnHover: 0.2s;
@@ -25,7 +31,8 @@ $componentsBoxShadow: 0px 10px 40px rgba(128, 158, 191, 0.2);
 
 // Sidebar
 $sidebarWidth: 177px;
+$sidebarMrgnRight: 104px;
 
 // Main
 $mainGapX: 20px;
-$mainContentGapLeft: 32px;
+$mainContentGapX: 32px;

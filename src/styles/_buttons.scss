@@ -44,7 +44,7 @@ $measurements: 43px;
   }
 
   &--round {
-    border-radius: 100px;
+    border-radius: $biggestBrdrRadius;
   }
 
   &--light {
@@ -60,7 +60,6 @@ $measurements: 43px;
   &--round,
   &--light,
   &--darker {
-
     &:hover {
       background: $shadowColor;
     }
@@ -69,8 +68,7 @@ $measurements: 43px;
   &--unload {
     background: $lightColor;
     border: 2px solid $darkColor;
-    transition: color $animOnHover,
-      background $animOnHover;
+    transition: color $animOnHover, background $animOnHover;
 
     &:hover {
       color: $lightColor;
@@ -91,11 +89,55 @@ $measurements: 43px;
     color: $lightColor;
     background: $simpleOrangeColor;
     border: none;
-    transition: color $animOnHover,
-      background $animOnHover;
-    
+    transition: color $animOnHover, background $animOnHover;
+
     &:hover {
       background: $activeOrangeColor;
+    }
+  }
+
+  &--change,
+  &--delete {
+    background: transparent;
+  }
+
+  &--date-close {
+    width: 27px;
+    height: 27px;
+    font-size: 12px;
+    font-weight: 700;
+    color: $choosenDateColor;
+    background: $closeDateColor;
+    border-radius: 50%;
+    transition: color $animOnHover, background $animOnHover;
+
+    &:hover {
+      color: $lightColor;
+      background: $choosenDateColor;
+    }
+  }
+
+  &--choose-period {
+    width: 160px;
+    height: 40px;
+    padding-left: 14px;
+
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 130%;
+
+    border: 2px solid transparent;
+    border-radius: 5px;
+    text-align: left;
+
+    &:hover {
+      border-color: $secondaryBorderColor;
+    }
+
+    &:focus {
+      border-color: $secondaryBorderColor;
+      background: $secondaryBorderColor;
     }
   }
 }

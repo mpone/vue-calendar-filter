@@ -10,7 +10,6 @@
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M22.8 23.8H1C0.4 23.8 0 23.4 0 22.8V1C0 0.4 0.4 0 1 0C1.6 0 2 0.4 2
@@ -66,7 +65,6 @@
               height="26"
               viewBox="0 0 26 26"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M12.9447 26C12.2809 26 11.7277 25.7778 11.2851 25.3334L0.663803
@@ -120,7 +118,6 @@
               height="24"
               viewBox="0 0 26 24"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M8.70517 10.9305C6.02833 10.9305 3.90918 8.47668 3.90918 5.46524C3.90918
@@ -182,7 +179,6 @@
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M22.8 23.8H1C0.4 23.8 0 23.4 0 22.8V1C0 0.4 0.4 0 1 0H22.8C23.4 0
@@ -237,7 +233,6 @@
               height="25"
               viewBox="0 0 22 25"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M10.9376 15.7001C8.53756 15.7001 6.5376 13.7 6.5376 11.3C6.5376 8.90005
@@ -281,7 +276,6 @@
               height="23"
               viewBox="0 0 24 23"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M21.3379 21.7H3.1379C2.3379 21.7 1.63791 21.2 1.43791 20.5C1.33791 20.3
@@ -339,7 +333,6 @@
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M22.7999 23.8H1C0.4 23.8 0 23.4 0 22.8V1C0 0.4 0.4 0 1 0H22.7999C23.3999 0
@@ -398,7 +391,6 @@
               height="17"
               viewBox="0 0 24 17"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M20.8 16.8H2.39999C1.09999 16.8 0 15.7 0 14.4V2.39996C0 1.09996
@@ -431,7 +423,6 @@
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M13 23.5H10.4C9.50002 23.5 8.70007 22.7 8.70007 21.8V20.1L7.90002
@@ -482,7 +473,6 @@
 @import "@/styles/main.scss";
 
   $btnBorderRadius: 6px;
-  $btnBorderColor: #e7ecf1;
   $btnHeight: $smallElementsHeight;
   $btnElemGapY: $componentsGapY;
 
@@ -530,7 +520,7 @@
       @extend %ptSansFontSidebar;
 
       border-radius: $btnBorderRadius;
-      border: 1px solid $btnBorderColor;
+      border: 1px solid $secondaryBorderColor;
       background: $mainLightColor;
       cursor: pointer;
       transition: border-color $animOnHover,
