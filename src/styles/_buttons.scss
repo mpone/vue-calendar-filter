@@ -144,6 +144,10 @@ $measurements: 43px;
     }
   }
 
+  &--choosen-peiod {
+    background: $secondaryBorderColor;
+  }
+
   &--date-picker,
   &--date-picker-disabled {
     font-size: 12px;
