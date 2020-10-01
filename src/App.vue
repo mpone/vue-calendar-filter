@@ -1,8 +1,5 @@
 <template>
-  <div id="app" :class="{
-    'bg-hovered': isCalendarClicked,
-    'not-scrolled': isCalendarClicked,
-  }">
+  <div id="app">
     <Header />
 
     <main class="main content-container">
@@ -15,7 +12,10 @@
         <FiltersBar @handle-calendar-click="handleCalendarClick"/>
 
         <article class="content__calendar-filter">
-          <CalendarFilter />
+          <CalendarFilter
+            v-if="isCalendarClicked"
+            @handle-calendar-click="handleCalendarClick"
+          />
         </article>
 
         <UsersTable :users="users" />
@@ -31,9 +31,6 @@ import Menu from '@/components/Menu.vue';
 import FiltersBar from '@/components/FiltersBar.vue';
 import CalendarFilter from '@/components/CalendarFilter.vue';
 import UsersTable from '@/components/UsersTable.vue';
-
-// @handle-calendar-click="handleCalendarClick"
-// v-show="isCalendarClicked"
 
 export default {
   name: 'App',
@@ -86,26 +83,6 @@ export default {
 
 <style lang="scss">
   @import "@/styles/main.scss";
-
-  .not-scrolled {
-    overflow: hidden;
-  }
-
-  .bg-hovered {
-
-    &::before {
-      z-index: 3;
-      content: "";
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(240, 246, 252, 0.8);
-      filter: blur(10px);
-    }
-  }
 
   .main {
     display: flex;

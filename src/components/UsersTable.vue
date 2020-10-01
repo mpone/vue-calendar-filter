@@ -26,6 +26,23 @@
                 <option value="50">50</option>
                 <option value="100">100</option>
               </select>
+
+              <span class="users__arrow">
+                <svg
+                  width="8"
+                  height="5"
+                  viewBox="0 0 11 6"
+                  fill="black"
+                >
+                  <path
+                    d="M5.5 6C5.21552 6 5.02591 5.91178 4.83625 5.7353L0.284483 1.50002C-0.0948276
+                  1.14708 -0.0948276 0.617647 0.284483 0.264706C0.663793 -0.0882353 1.23278
+                  -0.0882353 1.61209 0.264706L5.5 3.88239L9.38791 0.264706C9.76722 -0.0882353
+                  10.3362 -0.0882353 10.7155 0.264706C11.0948 0.617647 11.0948 1.14708 10.7155
+                  1.50002L6.16375 5.7353C5.97409 5.91178 5.68965 6 5.5 6Z"
+                  />
+                </svg>
+              </span>
             </div>
           </th>
         </tr>
@@ -289,11 +306,12 @@ export default {
     }
 
     &__quantity-select {
+      z-index: 2;
       font-family: inherit;
       height: 100%;
       border: none;
-
-      border: 1px solid;
+      padding-right: $mainGapX / 2;
+      background: transparent;
 
       &:focus {
         outline: none;
@@ -303,6 +321,11 @@ export default {
       &:hover {
         cursor: pointer;
       }
+    }
+
+    &__arrow {
+      position: absolute;
+      transform: translateY(-3px);
     }
 
     &__info {

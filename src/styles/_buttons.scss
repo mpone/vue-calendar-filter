@@ -65,7 +65,15 @@ $measurements: 43px;
     }
   }
 
-  &--unload {
+  &--reject,
+  &--confirm {
+    height: 45px;
+    padding-left: $mainGapX;
+    padding-right: $mainGapX;
+    border-radius: 7px;
+  }
+
+  &--reject {
     background: $lightColor;
     border: 2px solid $darkColor;
     transition: color $animOnHover, background $animOnHover;
@@ -76,16 +84,7 @@ $measurements: 43px;
     }
   }
 
-  &--unload,
-  &--add {
-    height: 45px;
-    padding-left: $mainGapX;
-    padding-right: $mainGapX;
-    border-radius: 7px;
-  }
-
-  &--add {
-    min-width: 195px;
+  &--confirm {
     color: $lightColor;
     background: $simpleOrangeColor;
     border: none;
@@ -94,6 +93,10 @@ $measurements: 43px;
     &:hover {
       background: $activeOrangeColor;
     }
+  }
+
+  &--add {
+    min-width: 195px;
   }
 
   &--change,
@@ -138,6 +141,21 @@ $measurements: 43px;
     &:focus {
       border-color: $secondaryBorderColor;
       background: $secondaryBorderColor;
+    }
+  }
+
+  &--date-picker,
+  &--date-picker-disabled {
+    font-size: 12px;
+    width: 100%;
+  }
+  
+  &--date-picker-disabled {
+    background: $disabledOrangeColor;
+    cursor: not-allowed;
+
+    &:hover {
+      background: $disabledOrangeColor;
     }
   }
 }
