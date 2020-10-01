@@ -15,6 +15,8 @@
           <CalendarFilter
             v-if="isCalendarClicked"
             @handle-calendar-click="handleCalendarClick"
+            @handle-dates-range="handleDatesRange"
+            :dates-range="datesRange"
           />
         </article>
 
@@ -45,6 +47,7 @@ export default {
   data() {
     return {
       isCalendarClicked: false,
+      datesRange: {},
       users: [
         {
           id: 1, name: 'User1', email: 'test@gmail.com', registration: 'registration', activity: 'activity', action: 'action', product: 'product',
@@ -76,6 +79,11 @@ export default {
   methods: {
     handleCalendarClick() {
       this.isCalendarClicked = !this.isCalendarClicked;
+    },
+    handleDatesRange(range) {
+      this.datesRange = range;
+
+      console.log(this.datesRange);
     },
   },
 };
