@@ -121,11 +121,15 @@
       </div>
 
       <div class="filters__contacts">
-        <button class="filters__contacts-btn filters__unload-btn button button--unload">
+        <button
+          class="filters__contacts-btn filters__unload-btn button button--reject"
+        >
           Выгрузить
         </button>
 
-        <button class="filters__contacts-btn filters__add-btn button button--add">
+        <button
+          class="filters__contacts-btn filters__add-btn button button--confirm button--add"
+        >
           Добавить контакты
         </button>
       </div>
