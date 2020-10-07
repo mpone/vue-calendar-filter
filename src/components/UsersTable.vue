@@ -64,11 +64,11 @@
           </td>
 
           <td class="users__registration users__cell users__cell--body">
-            {{ user.registration }}
+            {{ user.registration | moment }}
           </td>
 
           <td class="users__activity users__cell users__cell--body">
-            {{ user.activity }}
+            {{ user.activity | moment }}
           </td>
 
           <td class="users__action users__cell users__cell--body">
@@ -146,10 +146,17 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
   props: {
     users: {
       type: Array,
+    },
+  },
+  filters: {
+    moment(date) {
+      return moment(date).locale('ru').format('MMMM D, YYYY');
     },
   },
 };
@@ -190,7 +197,9 @@ export default {
     }
 
     &__string {
+      position: relative;
       display: flex;
+      justify-content: space-between;
       align-items: center;
       height: 57px;
       margin-bottom: $bodyPaddingY;
@@ -208,21 +217,20 @@ export default {
 
         &:nth-child(n+2) {
           padding-left: $mainGapX / 2;
-          padding-right: ($mainGapX * 2) -($mainGapX / 2);
         }
 
         &:nth-child(n+2):nth-child(-n+6) {
-          width: 17%;
+          flex: 1 1 17%;
+
         }
 
         &:last-child {
           width: 160px;
-          padding-right: 0;
         }
       }
 
       #{$blockName}__cell--head {
-        font-size: 13px;
+        // font-size: 12px;
         font-weight: 700;
       }
 

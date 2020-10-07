@@ -9,7 +9,12 @@
       </section>
 
       <section class="content">
-        <FiltersBar @handle-calendar-click="handleCalendarClick"/>
+        <FiltersBar
+          @handle-calendar-click="handleCalendarClick"
+          :dates-refreshed="datesRefreshed"
+          :dates-range="datesRange"
+          @reset-dates-range="resetDatesRange"
+        />
 
         <article class="content__calendar-filter">
           <CalendarFilter
@@ -20,7 +25,7 @@
           />
         </article>
 
-        <UsersTable :users="users" />
+        <UsersTable :users="filterDates" />
       </section>
     </main>
   </div>
@@ -33,6 +38,8 @@ import Menu from '@/components/Menu.vue';
 import FiltersBar from '@/components/FiltersBar.vue';
 import CalendarFilter from '@/components/CalendarFilter.vue';
 import UsersTable from '@/components/UsersTable.vue';
+
+import getUsersFromServer from '@/api/usersApi';
 
 export default {
   name: 'App',
@@ -47,43 +54,47 @@ export default {
   data() {
     return {
       isCalendarClicked: false,
+      datesRefreshed: false,
       datesRange: {},
-      users: [
-        {
-          id: 1, name: 'User1', email: 'test@gmail.com', registration: 'registration', activity: 'activity', action: 'action', product: 'product',
-        },
-        {
-          id: 2, name: 'User2', email: 'test@gmail.com', registration: 'registration', activity: 'activity', action: 'action', product: 'product',
-        },
-        {
-          id: 3, name: 'User3', email: 'test@gmail.com', registration: 'registration', activity: 'activity', action: 'action', product: 'product',
-        },
-        {
-          id: 4, name: 'User4', email: 'test@gmail.com', registration: 'registration', activity: 'activity', action: 'action', product: 'product',
-        },
-        {
-          id: 5, name: 'User5', email: 'test@gmail.com', registration: 'registration', activity: 'activity', action: 'action', product: 'product',
-        },
-        {
-          id: 6, name: 'User6', email: 'test@gmail.com', registration: 'registration', activity: 'activity', action: 'action', product: 'product',
-        },
-        {
-          id: 7, name: 'User7', email: 'test@gmail.com', registration: 'registration', activity: 'activity', action: 'action', product: 'product',
-        },
-        {
-          id: 8, name: 'User8', email: 'test@gmail.com', registration: 'registration', activity: 'activity', action: 'action', product: 'product',
-        },
-      ],
+      users: [],
     };
+  },
+  mounted() {
+    this.users = getUsersFromServer();
+  },
+  computed: {
+    filterDates() {
+      if ('start' in this.datesRange) {
+        return this.users.filter(
+          (user) => {
+            const parse = (date) => +Date.parse(date).toString().substr(0, 10);
+
+            return parse(user.registration) >= parse(this.datesRange.start)
+            && parse(user.registration) <= parse(this.datesRange.end);
+          },
+        );
+      }
+
+      return this.users;
+    },
   },
   methods: {
     handleCalendarClick() {
       this.isCalendarClicked = !this.isCalendarClicked;
     },
     handleDatesRange(range) {
-      this.datesRange = range;
+      if (range === null) {
+        this.datesRange = {};
+        this.datesRefreshed = false;
+        return;
+      }
 
-      console.log(this.datesRange);
+      this.datesRange = range;
+      this.datesRefreshed = true;
+    },
+    resetDatesRange() {
+      this.datesRange = {};
+      this.datesRefreshed = false;
     },
   },
 };
@@ -103,7 +114,7 @@ export default {
   }
 
   .content {
-    width: 1269px;
+    flex: 1 1 auto;
   }
 
 </style>
