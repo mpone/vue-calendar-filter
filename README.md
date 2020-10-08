@@ -1,4 +1,4 @@
-# vue-calendar-filter
+# Vue.js calendar filter
 
 Page with clients table, where you can sort them by registration date.
 
