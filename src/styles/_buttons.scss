@@ -133,9 +133,12 @@ $measurements: 43px;
     border: 2px solid transparent;
     border-radius: 5px;
     text-align: left;
+    transition: border-color $animOnHover,
+      background $animOnHover;
 
     &:hover {
       border-color: $secondaryBorderColor;
+      transition: border-color $animOnHover;
     }
 
     &:focus {
@@ -146,6 +149,7 @@ $measurements: 43px;
 
   &--choosen-peiod {
     background: $secondaryBorderColor;
+    transition: background $animOnHover;
   }
 
   &--date-picker,

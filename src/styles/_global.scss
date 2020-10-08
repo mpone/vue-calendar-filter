@@ -3,6 +3,11 @@ html {
   font-size: 15px;
   font-weight: normal;
   line-height: 100%;
+  transition: font-size $animOnHover;
+
+  @media (max-width: 1920px) {
+    font-size: 12px;
+  }
 }
 
 body {

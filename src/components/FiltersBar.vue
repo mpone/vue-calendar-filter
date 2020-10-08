@@ -135,15 +135,17 @@
       </div>
     </article>
 
-    <article v-show="isClicked" class="filters__choosen">
+    <article v-show="datesRefreshed" class="filters__choosen">
       <div class="filters__date">
         <span class="filters__date-text">
-          test
+          {{ datesRange.start | momentShort }}
+          -
+          {{ datesRange.end | momentFull }}
         </span>
 
         <button
           class="filters__date-close-btn button button--date-close"
-          @click="isClicked = !isClicked"
+          @click="$emit('reset-dates-range')"
         >
           &#10006;
         </button>
@@ -153,11 +155,29 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
+  props: {
+    datesRefreshed: {
+      type: Boolean,
+    },
+    datesRange: {
+      type: Object,
+    },
+  },
   data() {
     return {
       isClicked: false,
     };
+  },
+  filters: {
+    momentShort(date) {
+      return moment(date).locale('ru').format('D MMM');
+    },
+    momentFull(date) {
+      return moment(date).locale('ru').format('D MMM YYYY г.');
+    },
   },
   methods: {
     handleClick() {

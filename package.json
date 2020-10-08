@@ -8,9 +8,15 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@mdi/font": "^5.6.55",
     "core-js": "^3.6.5",
+    "moment": "^2.29.1",
+    "typeface-roboto": "0.0.75",
+    "v-calendar": "^1.0.8",
     "vue": "^2.6.11",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "vue2-daterange-picker": "^0.5.1",
+    "vuetify": "^2.3.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

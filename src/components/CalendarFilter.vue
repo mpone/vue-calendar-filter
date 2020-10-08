@@ -10,16 +10,22 @@
         <ul class="calendar__periods-list">
           <li class="calendar__periods-item">
             <button
-              @click="handleAllDatesBack"
+              @click="() => {
+                handleAllDatesBack();
+                handleFilterButtonClick();
+              }"
               class="calendar__button button button--choose-period"
-              :class="{ 'button--choosen-peiod': range === {}}"
+              :class="{ 'button--choosen-peiod': range === null}"
             >
               Весь срок
             </button>
           </li>
           <li class="calendar__periods-item">
             <button
-              @click="handleToday"
+              @click="() => {
+                handleToday();
+                handleFilterButtonClick();
+              }"
               class="calendar__button button button--choose-period"
               :class="{ 'button--choosen-peiod': range === today}"
             >
@@ -28,7 +34,10 @@
           </li>
           <li class="calendar__periods-item">
             <button
-              @click="handleYesterday"
+              @click="() => {
+                handleYesterday();
+                handleFilterButtonClick();
+              }"
               class="calendar__button button button--choose-period"
               :class="{ 'button--choosen-peiod': range === yesterday}"
             >
@@ -37,7 +46,10 @@
           </li>
           <li class="calendar__periods-item">
             <button
-              @click="handleLast7Days"
+              @click="() => {
+                handleLast7Days();
+                handleFilterButtonClick();
+              }"
               class="calendar__button button button--choose-period"
               :class="{ 'button--choosen-peiod': range === last7Days}"
             >
@@ -46,7 +58,10 @@
           </li>
           <li class="calendar__periods-item">
             <button
-              @click="handleLast30Days"
+              @click="() => {
+                handleLast30Days();
+                handleFilterButtonClick();
+              }"
               class="calendar__button button button--choose-period"
               :class="{ 'button--choosen-peiod': range === last30Days}"
             >
@@ -55,7 +70,10 @@
           </li>
           <li class="calendar__periods-item">
             <button
-              @click="handleThisMonth"
+              @click="() => {
+                handleThisMonth();
+                handleFilterButtonClick();
+              }"
               class="calendar__button button button--choose-period"
               :class="{ 'button--choosen-peiod': range === thisMonth}"
             >
@@ -64,7 +82,10 @@
           </li>
           <li class="calendar__periods-item">
             <button
-              @click="handlePreviousMonth"
+              @click="() => {
+                handlePreviousMonth();
+                handleFilterButtonClick();
+              }"
               class="calendar__button button button--choose-period"
               :class="{ 'button--choosen-peiod': range === previousMonth}"
             >
@@ -79,6 +100,7 @@
         mode="range"
         v-model="range"
         locale="RU"
+        color="orange"
         :attributes='attrs'
         is-inline
       >
@@ -86,7 +108,7 @@
 
         <article class="calendar__dates-buttons">
           <button
-            @click="() => range = []"
+            @click="handleResetClick"
             class="calendar__dates-button button button--reject button--date-picker">
             Отмена
           </button>
@@ -95,10 +117,10 @@
             @click="handleRefreshClick"
             class="calendar__dates-button button button--confirm"
             :class="{
-              'button--date-picker-disabled': !range,
-              'button--date-picker': range,
+              'button--date-picker-disabled': !rangeChoosen,
+              'button--date-picker': rangeChoosen,
             }"
-            :disabled="!range"
+            :disabled="!rangeChoosen"
           >
             Обновить
           </button>
@@ -117,6 +139,8 @@ export default {
   },
   data() {
     return {
+      refreshingCount: 0,
+      rangeChoosen: false,
       range: {},
       today: {
         end: new Date(),
@@ -164,15 +188,15 @@ export default {
       previousMonth: {
         end: new Date(
           new Date().getFullYear(),
-          new Date().getMonth() - 1,
-        ),
-        start: new Date(
-          new Date().getFullYear(),
           new Date().getMonth(),
           0,
         ),
+        start: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth() - 1,
+          1,
+        ),
       },
-
       attrs: [
         {
           key: 'today',
@@ -185,15 +209,22 @@ export default {
       ],
     };
   },
-  // watch: {
-  //   range() {
-  //     console.log(this.range);
-  //   },
-  // },
+  watch: {
+    range() {
+      if (this.range !== null && this.refreshingCount > 0) {
+        this.rangeChoosen = true;
+        return;
+      }
+
+      this.refreshingCount += 1;
+    },
+  },
   mounted() {
+    if (this.datesRange === null) {
+      return;
+    }
+
     this.range = this.datesRange;
-    console.log(this.range);
-    console.log(this.today);
   },
   methods: {
     handleAllDatesBack() {
@@ -217,8 +248,17 @@ export default {
     handlePreviousMonth() {
       this.range = this.previousMonth;
     },
+    handleFilterButtonClick() {
+      this.rangeChoosen = true;
+    },
+    handleResetClick() {
+      this.range = {};
+      this.rangeChoosen = false;
+      this.refreshingCount = 0;
+    },
     handleRefreshClick() {
       this.$emit('handle-dates-range', this.range);
+      this.$emit('handle-calendar-click');
     },
     handleOutsideClick(event) {
       if (event.target.className === 'bg-before') {
@@ -282,10 +322,6 @@ export default {
       margin-right: $mainGapX / 2;
       padding: $mainGapX / 2;
       background: $mainLightColor;
-    }
-
-    &__periods-item {
-      margin-bottom: $mainGapX / 4;
     }
 
     &__dates-buttons {
