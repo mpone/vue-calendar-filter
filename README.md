@@ -1,24 +1,22 @@
 # vue-calendar-filter
 
-## Project setup
-```
-npm install
-```
+Page with clients table, where you can sort them by registration date.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+[DEMO LINK](https://mpone.github.io/vue-calendar-filter/)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Page was developed with:
+- HTML5
+- CSS3
+- SCSS
+- BEM
+- Vue.js
+- JavaScript
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Available Scripts
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+In the project directory, you can run:
+
+### `npm run client`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:8080/vue-calendar-filter/](http://localhost:8080/vue-calendar-filter/) to view it in the browser.
