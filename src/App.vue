@@ -106,7 +106,8 @@ export default {
   .main {
     display: flex;
     justify-content: start;
-    margin-top: 48px;
+    margin-top: $mainContainerMrgnY;
+    margin-bottom: $mainContainerMrgnY;
   }
 
   .sidebar {

@@ -108,10 +108,7 @@
 
         <article class="calendar__dates-buttons">
           <button
-            @click="() => {
-              range = {};
-              rangeChoosen = false;
-            }"
+            @click="handleResetClick"
             class="calendar__dates-button button button--reject button--date-picker">
             Отмена
           </button>
@@ -254,8 +251,14 @@ export default {
     handleFilterButtonClick() {
       this.rangeChoosen = true;
     },
+    handleResetClick() {
+      this.range = {};
+      this.rangeChoosen = false;
+      this.refreshingCount = 0;
+    },
     handleRefreshClick() {
       this.$emit('handle-dates-range', this.range);
+      this.$emit('handle-calendar-click');
     },
     handleOutsideClick(event) {
       if (event.target.className === 'bg-before') {
